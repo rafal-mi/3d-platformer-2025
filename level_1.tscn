@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://dycmw7rc6p17u"]
+[gd_scene load_steps=7 format=3 uid="uid://dycmw7rc6p17u"]
 
 [ext_resource type="PackedScene" uid="uid://hc6mtslweb8l" path="res://block.tscn" id="1_8b5bf"]
 [ext_resource type="PackedScene" uid="uid://do0fn4xvctkpe" path="res://steve.tscn" id="2_tqs2a"]
 [ext_resource type="Environment" uid="uid://b7igt8bvi4cqg" path="res://Resources/level_1_environment.tres" id="4_lbqcq"]
 [ext_resource type="PackedScene" uid="uid://cvxjo6kyljcl5" path="res://coin.tscn" id="5_dpubg"]
 [ext_resource type="MeshLibrary" uid="uid://0snavn4wd501" path="res://Resources/world-blocks-v1.tres" id="5_kj2ng"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pcaua"]
+size = Vector3(120, 10, 120)
 
 [node name="Level1" type="Node3D"]
 
@@ -41,3 +44,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 2)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("4_lbqcq")
+
+[node name="FallZone" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -30, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FallZone"]
+shape = SubResource("BoxShape3D_pcaua")
+
+[connection signal="body_entered" from="FallZone" to="Steve" method="_on_fall_zone_body_entered"]
