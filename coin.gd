@@ -13,4 +13,11 @@ func _process(delta):
 	
 
 func _on_body_entered(body):
+	set_collision_layer_value(3, false)
+	set_collision_mask_value(1, false)
+	$AnimationPlayer.play("bounce")
+
+
+func _on_animation_player_animation_finished(anim_name):
 	queue_free()
+	
