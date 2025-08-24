@@ -13,6 +13,9 @@ func _process(delta):
 	
 
 func _on_body_entered(body):
+	Global.coins += 1
+	if Global.coins >= Global.NUM_COINS_TO_WIN:
+		get_tree().change_scene_to_file("res://level_1.tscn")
 	set_collision_layer_value(3, false)
 	set_collision_mask_value(1, false)
 	$AnimationPlayer.play("bounce")

@@ -1,5 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://dycmw7rc6p17u"]
+[gd_scene load_steps=8 format=3 uid="uid://dycmw7rc6p17u"]
 
+[ext_resource type="Script" path="res://level_1.gd" id="1_04imx"]
 [ext_resource type="PackedScene" uid="uid://hc6mtslweb8l" path="res://block.tscn" id="1_8b5bf"]
 [ext_resource type="PackedScene" uid="uid://do0fn4xvctkpe" path="res://steve.tscn" id="2_tqs2a"]
 [ext_resource type="Environment" uid="uid://b7igt8bvi4cqg" path="res://Resources/level_1_environment.tres" id="4_lbqcq"]
@@ -10,6 +11,7 @@
 size = Vector3(120, 10, 120)
 
 [node name="Level1" type="Node3D"]
+script = ExtResource("1_04imx")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 4, 2)
@@ -41,9 +43,6 @@ data = {
 }
 metadata/_editor_floor_ = Vector3(7, 1, 0)
 
-[node name="Coin1" parent="." instance=ExtResource("5_dpubg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.2, 3)
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("4_lbqcq")
 
@@ -53,5 +52,25 @@ collision_layer = 16
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="FallZone"]
 shape = SubResource("BoxShape3D_pcaua")
+
+[node name="Coins" type="Node3D" parent="."]
+
+[node name="Coin1" parent="Coins" instance=ExtResource("5_dpubg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1.2, 6)
+
+[node name="Coin2" parent="Coins" instance=ExtResource("5_dpubg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1.2, 4)
+
+[node name="Coin3" parent="Coins" instance=ExtResource("5_dpubg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1.2, 2)
+
+[node name="Coin4" parent="Coins" instance=ExtResource("5_dpubg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1.2, 0)
+
+[node name="Coin5" parent="Coins" instance=ExtResource("5_dpubg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1.2, -2)
+
+[node name="Coin6" parent="Coins" instance=ExtResource("5_dpubg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1.2, -4)
 
 [connection signal="body_entered" from="FallZone" to="Steve" method="_on_fall_zone_body_entered"]
