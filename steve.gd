@@ -10,6 +10,17 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _physics_process(delta):
 	
+	# Get the input direction and handle the movement/deceleration.
+	var input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	
+	# Play robot animations
+	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+		$AnimationPlayer.play("jump")
+	elif is_on_floor() and input_dir != Vector2.ZERO:
+		$AnimationPlayer.play("run")
+	elif is_on_floor() and input_dir == Vector2.ZERO:
+		$AnimationPlayer.play("idle")
+	
 	# Rotate the camera left / right
 	if Input.is_action_just_pressed("cam_left"):
 		$Camera_Controller.rotate_y(deg_to_rad(-30))
@@ -24,15 +35,12 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 
-	# Get the input direction and handle the movement/deceleration.
-	var input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	
 	# New Vector3 direction, taking into account the user arrow inputs and the camera rotation
 	var direction = ($Camera_Controller.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	
 	# Rotate the character mesh so oriented towards the direction moving in relation to camera
 	if input_dir != Vector2(0, 0):
-		$MeshInstance3D.rotation_degrees.y = $Camera_Controller.rotation_degrees.y - rad_to_deg(input_dir.angle()) + 270
+		$Armature.rotation_degrees.y = $Camera_Controller.rotation_degrees.y - rad_to_deg(input_dir.angle()) + 270
 		
 	# Rotate the character to align with the floor
 	if is_on_floor():
