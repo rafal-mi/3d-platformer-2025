@@ -40,7 +40,7 @@ func _physics_process(delta):
 	
 	# Rotate the character mesh so oriented towards the direction moving in relation to camera
 	if input_dir != Vector2(0, 0):
-		$Armature.rotation_degrees.y = $Camera_Controller.rotation_degrees.y - rad_to_deg(input_dir.angle()) + 270
+		$Armature.rotation_degrees.y = $Camera_Controller.rotation_degrees.y - rad_to_deg(input_dir.angle()) + 90
 		
 	# Rotate the character to align with the floor
 	if is_on_floor():

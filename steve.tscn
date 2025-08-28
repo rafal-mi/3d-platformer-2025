@@ -814,7 +814,7 @@ _data = {
 }
 
 [node name="Steve" type="CharacterBody3D"]
-collision_mask = 30
+collision_mask = 22
 script = ExtResource("1_a26ns")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
