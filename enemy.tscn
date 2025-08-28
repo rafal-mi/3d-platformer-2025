@@ -226,5 +226,10 @@ collision_layer = 0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TopChecker"]
 shape = SubResource("CylinderShape3D_rp2eh")
 
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.163726, 0.353775)
+target_position = Vector3(0, -0.3, 0)
+collision_mask = 2
+
 [connection signal="body_entered" from="SidesChecker" to="." method="_on_sides_checker_body_entered"]
 [connection signal="body_entered" from="TopChecker" to="." method="_on_top_checker_body_entered"]

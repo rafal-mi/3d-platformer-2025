@@ -7,6 +7,7 @@ var speed = 1.0
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @export var direction := Vector3(1, 0, 0)
+@export var turns_around_at_edges := true
 var turning := false
 
 func _physics_process(delta):
@@ -22,6 +23,10 @@ func _physics_process(delta):
 	
 	if is_on_wall() and not turning: 
 		turn_around()
+		
+	if not $RayCast3D.is_colliding() and is_on_floor() and not turning and turns_around_at_edges:
+		turn_around()
+		
 		
 func turn_around():
 	turning = true

@@ -20,6 +20,7 @@ transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 4, 2)
 shadow_enabled = true
 
 [node name="Blocks" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -5)
 
 [node name="Block1" parent="Blocks" instance=ExtResource("1_8b5bf")]
 transform = Transform3D(0.866025, -0.5, 0, 0.5, 0.866025, 0, 0, 0, 1, 0, 3, 0)
@@ -34,7 +35,7 @@ transform = Transform3D(0.5, -0.866025, 0, 0.866025, 0.5, 0, 0, 0, 1, 0.466506, 
 transform = Transform3D(0, -1, 0, 1, 0, 0, 0, 0, 1, -0.966506, 8.74102, 0)
 
 [node name="Steve" parent="." instance=ExtResource("2_tqs2a")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 1, -6)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1, 1, -6)
 
 [node name="GridMap" type="GridMap" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
@@ -104,5 +105,13 @@ direction = Vector3(0, 0, -1)
 [node name="Enemy5" parent="Enemies" instance=ExtResource("8_mb30a")]
 transform = Transform3D(-0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, -0.965926, -3, 1, -3)
 direction = Vector3(0, 0, -1)
+
+[node name="Enemy6" parent="Enemies" instance=ExtResource("8_mb30a")]
+transform = Transform3D(4.47035e-08, 0, 1, 0, 1, 0, -1, 0, 4.47035e-08, 13, 3, 7)
+
+[node name="Enemy7" parent="Enemies" instance=ExtResource("8_mb30a")]
+transform = Transform3D(4.27193e-08, 0, -1, 0, 1, 0, 1, 0, 4.27193e-08, 1, 2, -1)
+direction = Vector3(-1, 0, 0)
+turns_around_at_edges = false
 
 [connection signal="body_entered" from="FallZone" to="Steve" method="_on_fall_zone_body_entered"]
