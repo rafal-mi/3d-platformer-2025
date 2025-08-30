@@ -69,7 +69,7 @@ func align_with_floor(floor_normal):
 	xform.basis = xform.basis.orthonormalized()
 	
 func _on_fall_zone_body_entered(body):
-	get_tree().change_scene_to_file("res://level_1.tscn")
+	get_tree().change_scene_to_file("res://menu_game_over.tscn")
 
 func bounce():
 	velocity.y = JUMP_VELOCITY * 0.7
