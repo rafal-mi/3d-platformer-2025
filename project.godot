@@ -13,12 +13,17 @@ config_version=5
 config/name="3d-platformer-2025"
 run/main_scene="res://menu_title.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://Assets/Icons/icon_big_512x512.png"
 
 [autoload]
 
 Global="*res://global.gd"
 SoundManager="*res://sound_manager.tscn"
+
+[display]
+
+window/size/resizable=false
+window/stretch/mode="canvas_items"
 
 [input]
 
