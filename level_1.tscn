@@ -36,7 +36,7 @@ transform = Transform3D(0.5, -0.866025, 0, 0.866025, 0.5, 0, 0, 0, 1, 0.466506, 
 transform = Transform3D(0, -1, 0, 1, 0, 0, 0, 0, 1, -0.966506, 8.74102, 0)
 
 [node name="Steve" parent="." instance=ExtResource("2_tqs2a")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 11, -7, -20)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1, -6)
 
 [node name="GridMap" type="GridMap" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)

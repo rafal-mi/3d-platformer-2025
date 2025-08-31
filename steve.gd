@@ -33,6 +33,7 @@ func _physics_process(delta):
 
 	# Handle Jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+		$SoundJump.play()
 		velocity.y = JUMP_VELOCITY
 
 	# New Vector3 direction, taking into account the user arrow inputs and the camera rotation
@@ -69,6 +70,7 @@ func align_with_floor(floor_normal):
 	xform.basis = xform.basis.orthonormalized()
 	
 func _on_fall_zone_body_entered(body):
+	SoundManager.play_fall_sound()
 	get_tree().change_scene_to_file("res://menu_game_over.tscn")
 
 func bounce():

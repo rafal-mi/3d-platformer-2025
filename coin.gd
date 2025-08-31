@@ -15,6 +15,7 @@ func _process(delta):
 
 func _on_body_entered(body):
 	Global.coins += 1
+	SoundManager.play_coin_sound()
 	hud.get_node("CoinsLabel").text = str(Global.coins)
 	if Global.coins >= Global.NUM_COINS_TO_WIN:
 		get_tree().change_scene_to_file("res://menu_game_win.tscn")
